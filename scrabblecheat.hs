@@ -3,7 +3,7 @@ import Data.Maybe
 import qualified Data.Map as M
 
 possibilities :: String -> [String] -> [String]
-possibilities letters dictionary = filter (possibleWord letters) dictionary
+possibilities letters = filter (possibleWord letters)
 
 possibleWord :: String -> String -> Bool
 possibleWord xs [] = True
@@ -12,7 +12,7 @@ possibleWord xs (y:ys) = if y `elem` xs
   else False
 
 scores :: [String] -> [(String, Int)]
-scores xs = map (\x -> (x, score x)) xs
+scores = map (\x -> (x, score x))
 
 score :: String -> Int
 score = foldr (\tile acc -> acc + tileScore tile) 0
